@@ -9,7 +9,7 @@
           "children": [
             {
               "type": "minecraft:item",
-              "name": "examplemod:magneboom_ore",
+              "name": "magneboommod:magneboom_ore",
               "conditions": [
                 {
                   "condition": "minecraft:match_tool",
@@ -28,7 +28,7 @@
             },
             {
               "type": "minecraft:item",
-              "name": "examplemod:magneboom_volatile",
+              "name": "magneboommod:magneboom_volatile",
               "functions": [
                 {
                   "function": "set_count",

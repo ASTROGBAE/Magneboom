@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "magneboommod:blocks/magneboom_block_volatile"
+  }
+}

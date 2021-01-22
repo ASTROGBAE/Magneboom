@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "examplemod:magneboom_block_volatile"
+          "name": "magneboommod:magneboom_block_stable"
         }
       ]
     }

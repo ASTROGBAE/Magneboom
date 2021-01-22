@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "examplemod:items/magneboom_stable"
+    "layer0": "magneboommod:items/magneboom_stable"
   }
 }

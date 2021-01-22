@@ -1,4 +1,4 @@
-package com.example.examplemod;
+package com.example.magneboommod;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -19,14 +19,13 @@ import org.apache.logging.log4j.Logger;
 import java.util.stream.Collectors;
 
 // The value here should match an entry in the META-INF/mods.toml file
-@Mod(ExampleMod.MODID)
-public class ExampleMod
-{
+@Mod(Magneboommod.MODID)
+public class Magneboommod {
     // Directly reference a log4j logger.
     private static final Logger LOGGER = LogManager.getLogger();
-    public static final String MODID = "examplemod";
+    public static final String MODID = "magneboommod";
 
-    public ExampleMod() {
+    public Magneboommod() {
         // Register the setup method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         // Register the enqueueIMC method for modloading
@@ -56,7 +55,7 @@ public class ExampleMod
     private void enqueueIMC(final InterModEnqueueEvent event)
     {
         // some example code to dispatch IMC to another mod
-        InterModComms.sendTo("examplemod", "helloworld", () -> { LOGGER.info("Hello world from the MDK"); return "Hello world";});
+        InterModComms.sendTo("magneboommod", "helloworld", () -> { LOGGER.info("Hello world from the MDK"); return "Hello world";});
     }
 
     private void processIMC(final InterModProcessEvent event)
