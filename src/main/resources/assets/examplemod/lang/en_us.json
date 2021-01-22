@@ -1,0 +1,7 @@
+{
+  "item.examplemod.magneboom_volatile": "Volatile Magneboom",
+  "item.examplemod.magneboom_stable": "Stable Magneboom",
+  "block.examplemod.magneboom_ore": "Magneboom Ore",
+  "block.examplemod.magneboom_block_volatile": "Volatile Magneboom Block",
+  "block.examplemod.magneboom_block_stable": "Stable Magneboom Block"
+}

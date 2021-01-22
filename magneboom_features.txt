@@ -1,0 +1,16 @@
+Magneboom Feature List by GBAE
+
+Implemented:
+- magneboom ore (drops 4-5 magnebooms)
+- stable magneboom (purple color)
+- volatile magneboom (orange color)
+- remove magneboom block and replace with stable and volatile varients (purple color for stable)
+
+Issues:
+
+Planned:
+- no crafting recipes for volatile or stable magneboom blocks
+- volatile and stable magneboom drop when a magneboom ore is broken normally (higher chance of volatile and very small chance of stable)
+- breaking a magneboom ore block will have a chance of exploding
+- custom textures
+- magneboom ore generation

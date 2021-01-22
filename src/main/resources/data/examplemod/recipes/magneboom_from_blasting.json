@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "item": "examplemod:magneboom_ore"
+  },
+  "result": "examplemod:magneboom_volatile",
+  "experience": 0.7,
+  "cookingtime": 100
+}
