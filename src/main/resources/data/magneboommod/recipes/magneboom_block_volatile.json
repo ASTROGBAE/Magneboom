@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "xxx",
+    "xxx",
+    "xxx"
+  ],
+  "key": {
+    "x": {
+      "item": "magneboommod:magneboom_volatile"
+    }
+  },
+  "result": {
+    "item": "magneboommod:magneboom_block_volatile",
+    "count": 1
+  }
+}
