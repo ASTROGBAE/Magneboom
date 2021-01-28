@@ -12,8 +12,33 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
+import net.minecraft.block.Blocks;
+import net.minecraft.item.Items;
+import net.minecraft.util.registry.Registry;
+import net.minecraft.util.registry.WorldGenRegistries;
+import net.minecraft.world.biome.Biome;
+import net.minecraft.world.gen.GenerationStage;
+import net.minecraft.world.gen.feature.ConfiguredFeature;
+import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.world.gen.feature.IFeatureConfig;
+import net.minecraft.world.gen.feature.OreFeatureConfig;
+import net.minecraft.world.gen.feature.template.BlockMatchRuleTest;
+import net.minecraftforge.common.world.BiomeGenerationSettingsBuilder;
+import net.minecraftforge.event.world.BiomeLoadingEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+import java.util.ArrayList;
+
+/**
+ * Magneboom mod
+ * @author GBAE
+ */
+
+@Mod.EventBusSubscriber // from TECHNOFREAK code for ore gen
 public class RegistryHandler {
     // create DeferredRegister object
+    private static final ArrayList<ConfiguredFeature<?, ?>> overworldOres = new ArrayList<ConfiguredFeature<?, ?>>();
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Magneboommod.MODID);
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Magneboommod.MODID);
 
@@ -87,4 +112,31 @@ public class RegistryHandler {
                     MAGNEBOOM_BLOCK_STABLE.get(), new Item.Properties().group(ItemGroup.BUILDING_BLOCKS)
             )
     );
+
+    //ore registration, with code courtesy of TECHOFREAK
+
+    public static void registerOres(){
+        //BASE_STONE_OVERWORLD is for generating in stone, granite, diorite, and andesite
+        //NETHERRACK is for generating in netherrack
+        //BASE_STONE_NETHER is for generating in netherrack, basalt and blackstone
+
+        //Overworld Ore Register
+        overworldOres.add(register("magneboom_ore_gen", Feature.ORE.withConfiguration(new OreFeatureConfig(
+                OreFeatureConfig.FillerBlockType.BASE_STONE_OVERWORLD, MAGNEBOOM_ORE.get().getDefaultState(), 4)) //Vein Size
+                .range(64).square() //Spawn height start
+                .func_242731_b(64))); //Chunk spawn frequency
+    }
+
+    @SubscribeEvent(priority = EventPriority.HIGHEST)
+    public static void gen(BiomeLoadingEvent event) {
+        BiomeGenerationSettingsBuilder generation = event.getGeneration();
+        for(ConfiguredFeature<?, ?> ore : overworldOres){
+            if (ore != null) generation.withFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ore);
+        }
+    }
+
+    private static <FC extends IFeatureConfig> ConfiguredFeature<FC, ?> register(String name, ConfiguredFeature<FC, ?> configuredFeature) {
+        return Registry.register(WorldGenRegistries.CONFIGURED_FEATURE, Magneboommod.MODID + ":" + name, configuredFeature);
+    }
+
 }
